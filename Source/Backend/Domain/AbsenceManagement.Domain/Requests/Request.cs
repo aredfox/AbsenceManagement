@@ -14,5 +14,7 @@ namespace AbsenceManagement.Domain.Requests
         public Person Requestor { get; private set; }
         [Required]
         public Person Requestee { get; private set; }
+
+        private Request() { }
     }
 }

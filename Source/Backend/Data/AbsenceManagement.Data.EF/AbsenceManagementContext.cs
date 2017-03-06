@@ -7,6 +7,7 @@ namespace AbsenceManagement.Data.EF
     public class AbsenceManagementContext : DbContext
     {
         public IDbSet<Person> People { get; set; }
+        public IDbSet<Relation> Relations { get; set; }
         public IDbSet<Request> Requests { get; set; }
 
         public AbsenceManagementContext(string connectionString)
