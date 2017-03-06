@@ -17,7 +17,13 @@ namespace AbsenceManagement.Data.EF
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Request>()
+                .HasRequired(r => r.Requestor)
+                .WithMany(p => p.Requests);
+
+            modelBuilder.Entity<Request>()
+                .HasRequired(r => r.Requestee)
+                .WithOptional();
         }
     }
 }
