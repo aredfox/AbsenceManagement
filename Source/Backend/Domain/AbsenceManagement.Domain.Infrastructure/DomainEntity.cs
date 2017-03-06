@@ -1,7 +1,7 @@
 ﻿namespace AbsenceManagement.Domain.Infrastructure
 {
-    public class DomainEntity<TKey>
+    public abstract class DomainEntity<TKey>
     {
-        TKey Id { get; private set; }
+        public TKey Id { get; private set; }
     }
 }
