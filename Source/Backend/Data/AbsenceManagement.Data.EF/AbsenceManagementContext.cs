@@ -14,5 +14,10 @@ namespace AbsenceManagement.Data.EF
         }
         public AbsenceManagementContext() {
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            // See course https://app.pluralsight.com/player?course=entity-framework-6-getting-started&author=julie-lerman&name=entity-framework-6-getting-started-m2&clip=5&mode=live
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
