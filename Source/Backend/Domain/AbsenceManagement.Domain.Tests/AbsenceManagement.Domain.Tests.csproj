@@ -68,10 +68,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AbsenceManagement.Domain.Infrastructure\AbsenceManagement.Domain.Infrastructure.csproj">
-      <Project>{0fe42b3f-4979-4b9c-bda1-74bddef170e3}</Project>
-      <Name>AbsenceManagement.Domain.Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AbsenceManagement.Domain\AbsenceManagement.Domain.csproj">
       <Project>{64836c38-2beb-450c-8d9e-e9df6eee6b13}</Project>
       <Name>AbsenceManagement.Domain</Name>
