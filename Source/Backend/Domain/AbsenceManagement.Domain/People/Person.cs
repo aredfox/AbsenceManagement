@@ -19,8 +19,8 @@ namespace AbsenceManagement.Domain.People
         public List<Request> Requests { get; private set; }
 
         private Person() { }
-        internal Person(string firstName, string lastName, string dataSource, string dataSourceId, Guid id = default(Guid))
-            : base(id) {
+        internal Person(string firstName, string lastName, string dataSource, string dataSourceId)
+            : base() {
             FirstName = firstName;
             LastName = lastName;
             DataSource = dataSource;

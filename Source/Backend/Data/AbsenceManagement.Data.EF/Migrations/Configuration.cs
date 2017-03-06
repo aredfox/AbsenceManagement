@@ -12,7 +12,7 @@ namespace AbsenceManagement.Data.EF.Migrations
 
         protected override void Seed(AbsenceManagementContext context) {
             context.People.AddOrUpdate(
-                PersonFactory.Create("App", "Admin", "App", default(Guid).ToString(), default(Guid))
+                PersonFactory.Create("App", "Admin", "App", default(Guid).ToString())
             );
         }
     }

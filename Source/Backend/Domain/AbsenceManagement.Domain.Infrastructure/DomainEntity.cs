@@ -1,15 +1,12 @@
-﻿namespace AbsenceManagement.Domain.Infrastructure
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AbsenceManagement.Domain.Infrastructure
 {
     public abstract class DomainEntity<TKey>
     {
+        [Key]
         public TKey Id { get; private set; }
 
-        protected DomainEntity() :
-            this(default(TKey)) { }
-        protected DomainEntity(TKey id) {
-            Id = id != null
-               ? id
-               : default(TKey);
-        }
+        protected DomainEntity() { }
     }
 }
