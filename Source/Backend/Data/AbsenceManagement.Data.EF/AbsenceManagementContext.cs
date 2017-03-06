@@ -19,11 +19,13 @@ namespace AbsenceManagement.Data.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<Request>()
                 .HasRequired(r => r.Requestor)
-                .WithMany(p => p.Requests);
+                .WithMany(p => p.Requests)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Request>()
                 .HasRequired(r => r.Requestee)
-                .WithOptional();
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
     }
 }
