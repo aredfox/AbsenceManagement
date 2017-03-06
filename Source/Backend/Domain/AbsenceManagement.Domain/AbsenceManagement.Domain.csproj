@@ -43,6 +43,7 @@
     <Compile Include="People\Person.cs" />
     <Compile Include="Requests\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\AbsenceManagement.Domain.Infrastructure\AbsenceManagement.Domain.Infrastructure.csproj">
