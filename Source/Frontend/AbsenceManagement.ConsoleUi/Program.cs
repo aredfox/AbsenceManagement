@@ -15,6 +15,7 @@ namespace AbsenceManagement.ConsoleUi
             ListAllPeople();
             InsertRelation();
             UpdateDisconnectedPeople();
+            RemoveRelationships();
             RemovePeople();
             Console.ReadKey();
         }        
@@ -93,6 +94,14 @@ namespace AbsenceManagement.ConsoleUi
                 db.Entry(janeDoe).State = EntityState.Modified;
                 db.SaveChanges();
                 PrintPerson(janeDoe);
+            }
+        }
+
+        private static void RemoveRelationships() {
+            using (var db = new AbsenceManagementContext()) {
+                db.Database.Log = Console.WriteLine;
+                db.Relations.RemoveRange(db.Relations.ToList());
+                db.SaveChanges();
             }
         }
 
