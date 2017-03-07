@@ -12,8 +12,10 @@ namespace AbsenceManagement.Data.EF
 
         public AbsenceManagementContext(string connectionString)
             : base(connectionString) {
+            Configuration.LazyLoadingEnabled = false;
         }
         public AbsenceManagementContext() {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
