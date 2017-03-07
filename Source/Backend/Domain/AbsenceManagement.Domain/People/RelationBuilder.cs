@@ -1,6 +1,6 @@
 ﻿namespace AbsenceManagement.Domain.People
 {
-    public sealed class RelationBuilder
+    public sealed class RelationBuilder        
     {        
         private RelationType _type;
 
@@ -11,12 +11,12 @@
             return new RelationBuilderWithType(this);
         }        
 
-        public class RelationBuilderWithType
+        public sealed class RelationBuilderWithType
         {
             internal Person _master;
-            internal RelationBuilder _relationBuilder;
+            internal RelationType _type;            
             internal RelationBuilderWithType(RelationBuilder relationBuilder) {
-                _relationBuilder = relationBuilder;
+                _type = relationBuilder._type;
             }
 
             public RelationBuilderWithMaster ForMaster(Person master) {
@@ -24,13 +24,15 @@
                 return new RelationBuilderWithMaster(this);
             }
         }
-        public class RelationBuilderWithMaster
+        public sealed class RelationBuilderWithMaster
         {            
             internal Person _slave;
-            internal RelationBuilderWithType _relationBuilder;
+            internal Person _master;
+            internal RelationType _type;            
 
             internal RelationBuilderWithMaster(RelationBuilderWithType relationBuilder) {
-                _relationBuilder = relationBuilder;
+                _type = relationBuilder._type;
+                _master = relationBuilder._master;
             }
 
             public RelationBuilderWithSlave WithSlave(Person slave) {
@@ -39,7 +41,7 @@
             }
         }
 
-        public class RelationBuilderWithSlave
+        public sealed class RelationBuilderWithSlave
         {                        
             internal RelationBuilderWithMaster _relationBuilder;
 
@@ -49,8 +51,8 @@
 
             public Relation Build() {
                 return new Relation(
-                    type: _relationBuilder._relationBuilder._relationBuilder._type,
-                    master: _relationBuilder._relationBuilder._master,
+                    type: _relationBuilder._type,
+                    master: _relationBuilder._master,
                     slave: _relationBuilder._slave
                 );
             }

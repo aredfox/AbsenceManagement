@@ -2,7 +2,7 @@
 
 namespace AbsenceManagement.Domain.People
 {
-    public sealed class PersonBuilder
+    public sealed class PersonBuilder        
     {
         private string _firstName;
         private string _lastName;
