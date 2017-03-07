@@ -13,5 +13,10 @@ namespace AbsenceManagement.Domain.People
         public RelationType Type { get; private set; }
 
         private Relation() { }
+        internal Relation(RelationType type, Person master, Person slave) {
+            Type = type;
+            Master = master;
+            Slave = slave;
+        }
     }
 }

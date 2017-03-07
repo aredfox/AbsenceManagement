@@ -48,6 +48,7 @@
     <Compile Include="People\Person.cs" />
     <Compile Include="People\PersonBuilder.cs" />
     <Compile Include="People\Relation.cs" />
+    <Compile Include="People\RelationBuilder.cs" />
     <Compile Include="People\RelationType.cs" />
     <Compile Include="Requests\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
