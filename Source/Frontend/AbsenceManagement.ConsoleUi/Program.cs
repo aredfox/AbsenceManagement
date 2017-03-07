@@ -18,7 +18,7 @@ namespace AbsenceManagement.ConsoleUi
             RemoveRelationships();
             RemovePeople();
             Console.ReadKey();
-        }        
+        }
 
         private static IEnumerable<Person> GetPeople() {
             yield return new PersonBuilder()
@@ -29,7 +29,7 @@ namespace AbsenceManagement.ConsoleUi
                 .CreatePerson("Jane", "Doe")
                 .WithDataSource("hr", "154954")
                 .Build();
-        }        
+        }
 
         private static void InsertPeople() {
             using (var db = new AbsenceManagementContext()) {
@@ -52,7 +52,7 @@ namespace AbsenceManagement.ConsoleUi
         }
 
         private static void InsertRelation() {
-            using(var db = new AbsenceManagementContext()) {
+            using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
                 var janeDoe = db.People
                     .FirstOrDefault(p => p.FirstName == "Jane");
