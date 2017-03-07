@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AbsenceManagement.Domain.People
 {
-    public class Relation : DomainEntity<Guid>
+    public class Relation : DomainEntityWithModificationHistory<Guid>
     {
         [Required]
         public Person Master { get; private set; }
@@ -13,7 +13,8 @@ namespace AbsenceManagement.Domain.People
         public RelationType Type { get; private set; }
 
         private Relation() { }
-        internal Relation(RelationType type, Person master, Person slave) {
+        internal Relation(RelationType type, Person master, Person slave)
+            : base() {
             Type = type;
             Master = master;
             Slave = slave;

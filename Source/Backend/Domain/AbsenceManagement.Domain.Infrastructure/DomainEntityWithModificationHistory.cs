@@ -7,11 +7,15 @@ namespace AbsenceManagement.Domain.Infrastructure
         : DomainEntity<TKey>, IModificationHistory
     {
         [Required]
-        public DateTime Created { get; private set; }
+        public DateTime DateCreated { get; private set; }
         [Required]
-        public DateTime Modified { get; private set; }
+        public DateTime DateModified { get; private set; }
 
         protected DomainEntityWithModificationHistory()
-            : base() { }
+            : this(DateTime.UtcNow) { }
+        protected DomainEntityWithModificationHistory(DateTime dateCreated, DateTime? dateModified = null) {
+            DateCreated = dateCreated;
+            DateModified = dateModified ?? DateCreated;
+        }
     }
 }

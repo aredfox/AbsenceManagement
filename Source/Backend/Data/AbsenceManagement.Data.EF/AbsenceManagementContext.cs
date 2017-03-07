@@ -1,6 +1,9 @@
-﻿using AbsenceManagement.Domain.People;
+﻿using AbsenceManagement.Domain.Infrastructure;
+using AbsenceManagement.Domain.People;
 using AbsenceManagement.Domain.Requests;
+using System;
 using System.Data.Entity;
+using System.Linq;
 
 namespace AbsenceManagement.Data.EF
 {
@@ -28,6 +31,22 @@ namespace AbsenceManagement.Data.EF
                 .HasRequired(r => r.Requestee)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+        }
+
+        public override int SaveChanges() {
+            var history = ChangeTracker.Entries()
+                .Where(e => e.Entity is IModificationHistory
+                            && e.State == EntityState.Modified)
+                .Select(e => e.Entity as IModificationHistory)
+                .ToList();
+
+            foreach (var modified in history) {
+                history.GetType()
+                    .GetProperty(nameof(IModificationHistory.DateModified))
+                    .SetValue(modified, DateTime.UtcNow);
+            }
+
+            return base.SaveChanges();
         }
     }
 }
