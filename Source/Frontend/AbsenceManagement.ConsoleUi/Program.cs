@@ -73,11 +73,18 @@ namespace AbsenceManagement.ConsoleUi
         }
 
         private static void RemovePeople() {
+            IList<Person> peopleToDelete;
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
                 var peopleToDeleteIds = GetPeople().Select(p => p.DataSourceId);
-                var peopleToDelete = db.People.Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();
-                db.People.RemoveRange(peopleToDelete);
+                peopleToDelete = db.People.Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();                                
+            }
+
+            using(var db = new AbsenceManagementContext()) {
+                db.Database.Log = Console.WriteLine;
+                foreach(var personToDelete in peopleToDelete) {
+                    db.Entry(personToDelete).State = EntityState.Deleted;
+                }
                 db.SaveChanges();
             }
         }
