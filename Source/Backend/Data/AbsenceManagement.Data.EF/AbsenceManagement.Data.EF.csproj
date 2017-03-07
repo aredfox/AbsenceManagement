@@ -66,6 +66,10 @@
       <Project>{64836c38-2beb-450c-8d9e-e9df6eee6b13}</Project>
       <Name>AbsenceManagement.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AbsenceManagement.Data\AbsenceManagement.Data.csproj">
+      <Project>{93cbd8e5-74f8-472f-9a48-958101b2d45f}</Project>
+      <Name>AbsenceManagement.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.obsolete.config" />

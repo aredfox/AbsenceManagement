@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.ConsoleUi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{EFDBC95E-41EB-452B-BEC2-A4F1E3A04D23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.Data", "Backend\Data\AbsenceManagement.Data\AbsenceManagement.Data.csproj", "{93CBD8E5-74F8-472F-9A48-958101B2D45F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{B8034BF1-609F-4A31-A878-2FCAB1689E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8034BF1-609F-4A31-A878-2FCAB1689E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8034BF1-609F-4A31-A878-2FCAB1689E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CBD8E5-74F8-472F-9A48-958101B2D45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CBD8E5-74F8-472F-9A48-958101B2D45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CBD8E5-74F8-472F-9A48-958101B2D45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CBD8E5-74F8-472F-9A48-958101B2D45F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{44D1A28C-89B5-4C92-95C5-36883C4240C7} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
 		{0FE42B3F-4979-4B9C-BDA1-74BDDEF170E3} = {BC63B83B-7F5F-4FE5-95B0-CDEE580241DC}
 		{B8034BF1-609F-4A31-A878-2FCAB1689E66} = {EFDBC95E-41EB-452B-BEC2-A4F1E3A04D23}
+		{93CBD8E5-74F8-472F-9A48-958101B2D45F} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
 	EndGlobalSection
 EndGlobal
