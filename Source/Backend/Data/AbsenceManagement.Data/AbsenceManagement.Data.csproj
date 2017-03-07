@@ -45,7 +45,19 @@
     <Compile Include="IReadRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IWriteRepository.cs" />
+    <Compile Include="People\IReadRelationRepository.cs" />
+    <Compile Include="People\IRelationRepository.cs" />
+    <Compile Include="People\IWriteRelationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Requests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\AbsenceManagement.Domain\AbsenceManagement.Domain.csproj">
+      <Project>{64836C38-2BEB-450C-8D9E-E9DF6EEE6B13}</Project>
+      <Name>AbsenceManagement.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
