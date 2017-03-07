@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainEntity.cs" />
+    <Compile Include="DomainEntityWithModificationHistory.cs" />
+    <Compile Include="IModificationHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
