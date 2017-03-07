@@ -77,16 +77,21 @@ namespace AbsenceManagement.ConsoleUi
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
                 var peopleToDeleteIds = GetPeople().Select(p => p.DataSourceId);
-                peopleToDelete = db.People.Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();                                
+                peopleToDelete = db.People.Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();
             }
 
-            using(var db = new AbsenceManagementContext()) {
+            using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
-                foreach(var personToDelete in peopleToDelete) {
+                foreach (var personToDelete in peopleToDelete) {
                     db.Entry(personToDelete).State = EntityState.Deleted;
                 }
                 db.SaveChanges();
             }
+
+            // NOTE: deleting could very well be done by going off to a stored procedure,
+            // because retrieving and then doing another query for deletion
+            // seems a bit much
+            // Depends on the scenario
         }
     }
 }
