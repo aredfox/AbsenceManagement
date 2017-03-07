@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbsenceManagementContext.cs" />
-    <Compile Include="Migrations\201703062351557_Initial.cs" />
-    <Compile Include="Migrations\201703062351557_Initial.Designer.cs">
-      <DependentUpon>201703062351557_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201703071330348_Initial.cs" />
+    <Compile Include="Migrations\201703071330348_Initial.Designer.cs">
+      <DependentUpon>201703071330348_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703062351557_Initial.resx">
-      <DependentUpon>201703062351557_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703071330348_Initial.resx">
+      <DependentUpon>201703071330348_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
