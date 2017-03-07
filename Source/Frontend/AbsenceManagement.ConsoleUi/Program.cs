@@ -3,6 +3,7 @@ using AbsenceManagement.Domain.People;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace AbsenceManagement.ConsoleUi
 {
@@ -11,6 +12,8 @@ namespace AbsenceManagement.ConsoleUi
         static void Main(string[] args) {
             Database.SetInitializer(new NullDatabaseInitializer<AbsenceManagementContext>()); // stops from db initialization routine
             InsertPeople();
+            ListAllPeople();
+            UpdateDisconnectedPeople();
             RemovePeople();
             Console.ReadKey();
         }
@@ -28,11 +31,53 @@ namespace AbsenceManagement.ConsoleUi
             }
         }
 
+        private static void ListAllPeople() {
+            using (var db = new AbsenceManagementContext()) {
+                db.Database.Log = Console.WriteLine;
+                PrintPerson(db.People.ToList().ToArray());
+            }
+        }
+        private static void PrintPerson(params Person[] people) {
+            foreach (var person in people) {
+                Console.WriteLine(person.ToString());
+            }
+        }
+
+        private static void UpdateDisconnectedPeople() {
+            Person janeDoe;
+            using (var db = new AbsenceManagementContext()) {
+                db.Database.Log = Console.WriteLine;
+                janeDoe = db.People
+                    .Where(p => p.FirstName == "Jane")
+                    .FirstOrDefault();
+                PrintPerson(janeDoe);
+            }
+
+            janeDoe.GetType().GetProperty("FirstName").SetValue(janeDoe, "Jean");
+
+            using (var db = new AbsenceManagementContext()) {
+                db.Database.Log = Console.WriteLine;
+                db.Entry(janeDoe).State = EntityState.Modified;
+                db.SaveChanges();
+                PrintPerson(janeDoe);
+            }
+
+            janeDoe.GetType().GetProperty("FirstName").SetValue(janeDoe, "Jane");
+
+            using (var db = new AbsenceManagementContext()) {
+                db.Database.Log = Console.WriteLine;
+                db.Entry(janeDoe).State = EntityState.Modified;
+                db.SaveChanges();
+                PrintPerson(janeDoe);
+            }
+        }
+
         private static void RemovePeople() {
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
-                foreach (var person in GetPeople()) {
-                }
+                var peopleToDeleteIds = GetPeople().Select(p => p.DataSourceId);
+                var peopleToDelete = db.People.Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();
+                db.People.RemoveRange(peopleToDelete);
                 db.SaveChanges();
             }
         }
