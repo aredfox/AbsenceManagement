@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NodaTime, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NodaTime.1.3.2\lib\net35-Client\NodaTime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="People\Person.cs" />
-    <Compile Include="People\PersonFactory.cs" />
+    <Compile Include="People\PersonBuilder.cs" />
     <Compile Include="People\Relation.cs" />
     <Compile Include="People\RelationType.cs" />
     <Compile Include="Requests\Request.cs" />
@@ -54,6 +58,9 @@
       <Project>{0fe42b3f-4979-4b9c-bda1-74bddef170e3}</Project>
       <Name>AbsenceManagement.Domain.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

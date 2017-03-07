@@ -19,8 +19,14 @@ namespace AbsenceManagement.ConsoleUi
         }
 
         private static IEnumerable<Person> GetPeople() {
-            yield return PersonFactory.Create("John", "Doe", "hr", "154785");
-            yield return PersonFactory.Create("Jane", "Doe", "hr", "154954");
+            yield return new PersonBuilder()
+                .CreatePerson("John", "Doe")
+                .WithDataSource("hr", "154785")
+                .Build();
+            yield return new PersonBuilder()
+                .CreatePerson("Jane", "Doe")
+                .WithDataSource("hr", "154954")
+                .Build();
         }
 
         private static void InsertPeople() {
