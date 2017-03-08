@@ -17,7 +17,7 @@ namespace AbsenceManagement.Data.EF.Migrations
                     .FirstOrDefault(p => p.DataSource == "SYSTEM" && p.DataSourceId == "0");
             if (systemUser == null) {
                 context.People.AddOrUpdate(
-                    new PersonBuilder()
+                    PersonBuilder
                     .CreatePerson("System", "User")
                     .WithDataSource("SYSTEM", "0")
                     .Build()

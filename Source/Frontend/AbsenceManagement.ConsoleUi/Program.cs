@@ -21,11 +21,11 @@ namespace AbsenceManagement.ConsoleUi
         }
 
         private static IEnumerable<Person> GetPeople() {
-            yield return new PersonBuilder()
+            yield return PersonBuilder
                 .CreatePerson("John", "Doe")
                 .WithDataSource("hr", "154785")
                 .Build();
-            yield return new PersonBuilder()
+            yield return PersonBuilder
                 .CreatePerson("Jane", "Doe")
                 .WithDataSource("hr", "154954")
                 .Build();
@@ -58,7 +58,7 @@ namespace AbsenceManagement.ConsoleUi
                     .FirstOrDefault(p => p.FirstName == "Jane");
                 var johnDoe = db.People
                     .FirstOrDefault(p => p.FirstName == "John");
-                var relation = new RelationBuilder()
+                var relation = RelationBuilder
                     .CreateRelation(RelationType.ManagerToSubordinate)
                     .ForMaster(janeDoe)
                     .WithSlave(johnDoe)

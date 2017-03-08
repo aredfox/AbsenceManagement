@@ -9,12 +9,13 @@ namespace AbsenceManagement.Domain.People
         private string _dataSource = "SYSTEM";
         private string _dataSourceId = SystemClock.Instance.Now.Ticks.ToString();
 
-        public PersonBuilder() { }
-
-        public PersonBuilder CreatePerson(string firstName, string lastName) {
+        private PersonBuilder(string firstName, string lastName) {
             _firstName = firstName;
             _lastName = lastName;
-            return this;
+        }
+
+        public static PersonBuilder CreatePerson(string firstName, string lastName) {
+            return new PersonBuilder(firstName, lastName);
         }
         public PersonBuilder WithDataSource(string dataSource, string dataSourceId) {
             _dataSource = dataSource;

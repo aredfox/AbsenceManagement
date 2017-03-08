@@ -4,11 +4,12 @@
     {        
         private RelationType _type;
 
-        public RelationBuilder() { }
-        
-        public RelationBuilderWithType CreateRelation(RelationType type) {
+        public RelationBuilder(RelationType type) {
             _type = type;
-            return new RelationBuilderWithType(this);
+        }
+        
+        public static RelationBuilderWithType CreateRelation(RelationType type) {            
+            return new RelationBuilderWithType(new RelationBuilder(type));
         }        
 
         public sealed class RelationBuilderWithType
