@@ -9,9 +9,9 @@ namespace AbsenceManagement.Data.EF
 {
     public class AbsenceManagementContext : DbContext
     {
-        public DbSet<Person> People { get; set; }
-        public DbSet<Relation> Relations { get; set; }
-        public DbSet<Request> Requests { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Relation> Relations { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
 
         public AbsenceManagementContext(string connectionString)
             : base(connectionString) {
