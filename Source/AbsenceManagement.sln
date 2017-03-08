@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.Data", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.Data.EF.Infrastructure", "Backend\Data\AbsenceManagement.Data.EF.Infrastructure\AbsenceManagement.Data.EF.Infrastructure.csproj", "{41901A23-5341-4C64-9C38-36288AD7F6DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.Data.EF.Tests", "Backend\Data\AbsenceManagement.Data.EF.Tests\AbsenceManagement.Data.EF.Tests.csproj", "{CFD4A944-20D7-46F1-9210-45688FAD8181}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{41901A23-5341-4C64-9C38-36288AD7F6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41901A23-5341-4C64-9C38-36288AD7F6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41901A23-5341-4C64-9C38-36288AD7F6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,5 +85,6 @@ Global
 		{B8034BF1-609F-4A31-A878-2FCAB1689E66} = {EFDBC95E-41EB-452B-BEC2-A4F1E3A04D23}
 		{93CBD8E5-74F8-472F-9A48-958101B2D45F} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
 		{41901A23-5341-4C64-9C38-36288AD7F6DD} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
+		{CFD4A944-20D7-46F1-9210-45688FAD8181} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
 	EndGlobalSection
 EndGlobal
