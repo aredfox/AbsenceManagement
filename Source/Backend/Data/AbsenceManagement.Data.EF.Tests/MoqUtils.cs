@@ -11,7 +11,7 @@ namespace AbsenceManagement.Data.EF.Tests
 {
     public static class MoqUtils
     {
-        public static Mock<AbsenceManagementContext> MockDbContext(
+        public static MockedDbContext<AbsenceManagementContext> MockDbContext(
         IList<Person> people = null) {
             var mockContext = new Mock<AbsenceManagementContext>();
 
@@ -21,10 +21,12 @@ namespace AbsenceManagement.Data.EF.Tests
                            .Cast<Person>()
                            .ToList();
 
-            mockContext
-                .MockDbSet(people, (o, p) => p.Id == (Guid)o[0]);
+            var dbSets = new object[] {
+                mockContext
+                    .MockDbSet(people, (o, p) => p.Id == (Guid)o[0])
+            };
 
-            return mockContext;
+            return new MockedDbContext<AbsenceManagementContext>(mockContext, dbSets);
         }
     }
 }

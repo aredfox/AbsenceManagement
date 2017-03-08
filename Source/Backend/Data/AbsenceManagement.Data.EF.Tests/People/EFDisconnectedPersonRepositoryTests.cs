@@ -12,7 +12,7 @@ namespace AbsenceManagement.Data.EF.Tests.People
         public void Can_Add() {
             // Arrange
             var sut = new EFDisconnectedPersonRepository(
-                MoqUtils.MockDbContext().Object
+                MoqUtils.MockDbContext().DbContext.Object
             );
             var expected = PersonBuilder.CreatePerson("John", "Doe").Build();
             // Act
