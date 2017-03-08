@@ -45,6 +45,7 @@
     <Compile Include="DomainEntityWithModificationHistory.cs" />
     <Compile Include="Formatting\DefaultStringFormatter.cs" />
     <Compile Include="Formatting\IStringFormatter.cs" />
+    <Compile Include="Formatting\StringPartBuilder.cs" />
     <Compile Include="IModificationHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

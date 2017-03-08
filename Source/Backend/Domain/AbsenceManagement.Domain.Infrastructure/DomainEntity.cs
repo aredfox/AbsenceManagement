@@ -22,9 +22,9 @@ namespace AbsenceManagement.Domain.Infrastructure
         public override string ToString() {
             return ToStringFormatter.Format(
                 subject: this,
-                stringParts: new Func<DomainEntity<TKey>, string>[] {
-                    de => de.Id.ToString()
-                }
+                stringParts: StringPartBuilder<DomainEntity<TKey>>
+                    .StartWith(de => de.Id.ToString())
+                    .Build()
             );
         }
     }
