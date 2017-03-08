@@ -12,8 +12,10 @@ namespace AbsenceManagement.Domain.Requests
 
         [Required]
         public Person Requestor { get; private set; }
+        public Guid RequestorId { get; private set; }
         [Required]
         public Person Requestee { get; private set; }
+        public Guid RequesteeId { get; private set; }
 
         private Request() { }
     }

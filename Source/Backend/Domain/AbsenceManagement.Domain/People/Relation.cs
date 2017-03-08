@@ -8,8 +8,10 @@ namespace AbsenceManagement.Domain.People
     {
         [Required]
         public Person Master { get; private set; }
+        public Guid MasterId { get; private set; }
         [Required]
         public Person Slave { get; private set; }
+        public Guid SlaveId { get; private set; }
         public RelationType Type { get; private set; }
 
         private Relation() { }
