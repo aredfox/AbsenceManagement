@@ -1,5 +1,7 @@
 ﻿using AbsenceManagement.Domain.People;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AbsenceManagement.Domain.Tests
 {
@@ -12,6 +14,38 @@ namespace AbsenceManagement.Domain.Tests
                 .WithDataSource("HR", "11101985")
                 .Build()
             };
+
+            yield return new object[] {
+                PersonBuilder
+                .CreatePerson("Ramiro", "Solomon")
+                .WithDataSource("HR", "15051945")
+                .Build()
+            };
+
+            yield return new object[] {
+                PersonBuilder
+                .CreatePerson("Sonya", "Sharpe")
+                .WithDataSource("HR", "29101966")
+                .Build()
+            };
+        }
+
+        public static IEnumerable<object[]> GetRelationTestData() {
+            var master = PersonBuilder
+                .CreatePerson("Harley", "Powell")
+                .WithDataSource("HR", "30031984")
+                .Build();
+
+            return GetPeopleTestData()
+                .Select(o => o[0])
+                .Cast<Person>()                
+                .Select(p => RelationBuilder
+                    .CreateRelation(RelationType.ManagerToSubordinate)
+                    .ForMaster(master)
+                    .WithSlave(p)
+                    .Build()
+                )
+                .Select(r => new object[] { r });
         }
     }
 }

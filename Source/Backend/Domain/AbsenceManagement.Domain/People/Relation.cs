@@ -1,4 +1,5 @@
 ﻿using AbsenceManagement.Domain.Infrastructure;
+using AbsenceManagement.Domain.Infrastructure.Formatting;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,7 +20,21 @@ namespace AbsenceManagement.Domain.People
             : base() {
             Type = type;
             Master = master;
+            MasterId = master.Id;
             Slave = slave;
+            SlaveId = slave.Id;
+        }
+
+        public override string ToString() {            
+            return ToStringFormatter.Format(
+                subject: this,
+                stringParts: StringPartBuilder<Relation>
+                    .StartWith(r => r.Id.ToString())
+                    .And(r => r.Type.ToString())
+                    .And(r => $"M: {r.MasterId.ToString()}")
+                    .And(r => $"S: {r.SlaveId.ToString()}")
+                    .Build()
+            );
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AbsenceManagement.Domain.Infrastructure;
+using AbsenceManagement.Domain.Infrastructure.Formatting;
 using AbsenceManagement.Domain.Requests;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,16 @@ namespace AbsenceManagement.Domain.People
             DataSource = dataSource;
             DataSourceId = dataSourceId;
             Requests = new List<Request>();
+        }
+
+        public override string ToString() {
+            return ToStringFormatter.Format(
+                subject: this,
+                stringParts: StringPartBuilder<Person>
+                    .StartWith(p => p.Id.ToString())
+                    .And(p => $"{p.FirstName} {p.LastName}")
+                    .Build()
+            );
         }
     }
 }

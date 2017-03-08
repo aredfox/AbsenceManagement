@@ -1,4 +1,5 @@
 ﻿using NodaTime;
+using System;
 
 namespace AbsenceManagement.Domain.People
 {
@@ -7,7 +8,7 @@ namespace AbsenceManagement.Domain.People
         private string _firstName;
         private string _lastName;
         private string _dataSource = "SYSTEM";
-        private string _dataSourceId = SystemClock.Instance.Now.Ticks.ToString();
+        private string _dataSourceId = SystemClock.Instance.Now.Ticks.ToString();        
 
         private PersonBuilder(string firstName, string lastName) {
             _firstName = firstName;
