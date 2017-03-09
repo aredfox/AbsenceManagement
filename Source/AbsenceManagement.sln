@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.Data.EF.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.Data.EF.Tests", "Backend\Data\AbsenceManagement.Data.EF.Tests\AbsenceManagement.Data.EF.Tests.csproj", "{CFD4A944-20D7-46F1-9210-45688FAD8181}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.WebUi", "Frontend\AbsenceManagement.WebUi\AbsenceManagement.WebUi.csproj", "{1ADE480F-9481-4741-B0FD-1C48332176F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbsenceManagement.WebUi.Tests", "AbsenceManagement.WebUi.Tests\AbsenceManagement.WebUi.Tests.csproj", "{19EFB5B2-B0D8-4935-82BB-C97B6F191E5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,14 @@ Global
 		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFD4A944-20D7-46F1-9210-45688FAD8181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADE480F-9481-4741-B0FD-1C48332176F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADE480F-9481-4741-B0FD-1C48332176F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADE480F-9481-4741-B0FD-1C48332176F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADE480F-9481-4741-B0FD-1C48332176F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19EFB5B2-B0D8-4935-82BB-C97B6F191E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19EFB5B2-B0D8-4935-82BB-C97B6F191E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19EFB5B2-B0D8-4935-82BB-C97B6F191E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19EFB5B2-B0D8-4935-82BB-C97B6F191E5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +98,7 @@ Global
 		{93CBD8E5-74F8-472F-9A48-958101B2D45F} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
 		{41901A23-5341-4C64-9C38-36288AD7F6DD} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
 		{CFD4A944-20D7-46F1-9210-45688FAD8181} = {38739D65-FE3D-45A4-9732-BC283DFDD0D9}
+		{1ADE480F-9481-4741-B0FD-1C48332176F5} = {EFDBC95E-41EB-452B-BEC2-A4F1E3A04D23}
+		{19EFB5B2-B0D8-4935-82BB-C97B6F191E5A} = {EFDBC95E-41EB-452B-BEC2-A4F1E3A04D23}
 	EndGlobalSection
 EndGlobal
