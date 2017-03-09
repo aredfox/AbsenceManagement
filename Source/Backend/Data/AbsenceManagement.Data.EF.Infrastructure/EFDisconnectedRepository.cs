@@ -40,7 +40,7 @@ namespace AbsenceManagement.Data.EF.Infrastructure
         }
 
         public virtual TEntity GetById(TKey key) {
-            return Set.AsNoTracking().FirstOrDefault(e => e.Id.Equals(key));
+            return Set.Find(key);
         }
 
         public virtual void Update(TEntity entity, TKey entityId = default(TKey)) {            

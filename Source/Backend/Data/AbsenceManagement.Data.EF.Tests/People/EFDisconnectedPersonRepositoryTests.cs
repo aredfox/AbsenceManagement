@@ -82,5 +82,22 @@ namespace AbsenceManagement.Data.EF.Tests.People
                 Assert.Equal(0, sut.GetAll().Count());                
             }
         }
+
+        [Fact]
+        public void Can_GetById()
+        {
+            using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
+                // Arrange
+                var sut = new EFDisconnectedPersonRepository(ctx);
+                var johnId = sut.GetAll().FirstOrDefault().Id;
+
+                // Act
+                var john = sut.GetById(johnId);
+
+                // Assert
+                Assert.NotNull(john);
+                Assert.Equal(johnId, john.Id);
+            }
+        }
     }
 }
