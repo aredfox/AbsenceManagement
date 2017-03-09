@@ -41,7 +41,7 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
                 sut.Update(actual);
 
                 // Assert
-                Assert.Equal(1, sut.GetAll().Count());
+                Assert.Equal(ctx.People.Count(), sut.GetAll().Count());
                 Assert.NotNull(actual);
                 Assert.Equal("Johnnie", actual.FirstName);
                 Assert.Equal("Doe", actual.LastName);
@@ -60,7 +60,7 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
                 sut.Delete(john);
 
                 // Assert
-                Assert.Equal(0, sut.GetAll().Count());
+                Assert.Equal(ctx.People.Count(), sut.GetAll().Count());
             }
         }
 
@@ -76,7 +76,7 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
                 sut.Delete(johnId);
 
                 // Assert
-                Assert.Equal(0, sut.GetAll().Count());
+                Assert.Equal(ctx.People.Count(), sut.GetAll().Count());
             }
         }
 
