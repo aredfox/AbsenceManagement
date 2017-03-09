@@ -13,7 +13,7 @@ namespace AbsenceManagement.Data.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703092201490_Initial"; }
+            get { return "201703092231214_Initial"; }
         }
         
         string IMigrationMetadata.Source

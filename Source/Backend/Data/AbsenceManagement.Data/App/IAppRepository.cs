@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AbsenceManagement.Data.App
 {
-    public interface IAppRepository<TEntity>
+    public interface IAppRepository<TEntity, TKey>
         where TEntity : class
     {
         List<TEntity> GetAll();
@@ -15,9 +15,9 @@ namespace AbsenceManagement.Data.App
         Task<List<TEntity>> PageAllAsync(int skip, int take);
         Task<List<TEntity>> PageAllAsync(CancellationToken cancellationToken, int skip, int take);
 
-        TEntity FindById(object id);
-        Task<TEntity> FindByIdAsync(object id);
-        Task<TEntity> FindByIdAsync(CancellationToken cancellationToken, object id);
+        TEntity FindById(TKey id);
+        Task<TEntity> FindByIdAsync(TKey id);
+        Task<TEntity> FindByIdAsync(CancellationToken cancellationToken, TKey id);
 
         void Add(TEntity entity);
         void Update(TEntity entity);

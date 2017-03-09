@@ -31,7 +31,8 @@ namespace AbsenceManagement.Data.EF.Migrations
                 context.Users.Add(new User {
                     Person = systemUser,
                     PersonId = systemUser.Id,                    
-                    UserName = "SYSTEM",                    
+                    UserName = "SYSTEM",   
+                    Email = "system@absencemanagement.com"
                 });
             }
         }

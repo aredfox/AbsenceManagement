@@ -26,6 +26,7 @@ namespace AbsenceManagement.Data.EF.Migrations
                     {
                         Id = c.Guid(nullable: false, identity: true),
                         UserName = c.String(),
+                        Email = c.String(),
                         PersonId = c.Guid(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         DateModified = c.DateTime(nullable: false),

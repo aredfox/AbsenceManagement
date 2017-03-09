@@ -9,6 +9,7 @@ namespace AbsenceManagement.Domain.App
     public class User : DomainEntityWithModificationHistory<Guid>
     {        
         public string UserName { get; set; }
+        public string Email { get; set; }
         [Required]
         public Person Person { get; set; }
         public Guid PersonId { get; set; }

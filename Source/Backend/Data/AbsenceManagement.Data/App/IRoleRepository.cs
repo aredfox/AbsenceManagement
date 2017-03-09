@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AbsenceManagement.Data.App
 {
-    public interface IRoleRepository : IAppRepository<Role>
+    public interface IRoleRepository : IAppRepository<Role, int>
     {
         Role FindByName(string roleName);
         Task<Role> FindByNameAsync(string roleName);

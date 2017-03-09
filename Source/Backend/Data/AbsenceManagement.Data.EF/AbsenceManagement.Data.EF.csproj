@@ -50,9 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbsenceManagementContext.cs" />
-    <Compile Include="Migrations\201703092201490_Initial.cs" />
-    <Compile Include="Migrations\201703092201490_Initial.Designer.cs">
-      <DependentUpon>201703092201490_Initial.cs</DependentUpon>
+    <Compile Include="App\EFExternalLoginRepository.cs" />
+    <Compile Include="App\EFRoleRepository.cs" />
+    <Compile Include="App\EFUserRepository.cs" />
+    <Compile Include="Migrations\201703092231214_Initial.cs" />
+    <Compile Include="Migrations\201703092231214_Initial.Designer.cs">
+      <DependentUpon>201703092231214_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="People\EFDisconnectedPersonRepository.cs" />
@@ -83,11 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703092201490_Initial.resx">
-      <DependentUpon>201703092201490_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703092231214_Initial.resx">
+      <DependentUpon>201703092231214_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
