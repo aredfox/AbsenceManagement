@@ -18,6 +18,10 @@ namespace AbsenceManagement.WebUi.Models
         }
     }
 
+    // http://stackoverflow.com/questions/19902756/asp-net-identity-dbcontext-confusion
+    // http://stackoverflow.com/questions/19764233/merge-mydbcontext-with-identitydbcontext?rq=1
+    // http://stackoverflow.com/questions/21418902/integrating-asp-net-identity-into-existing-dbcontext
+    // 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
