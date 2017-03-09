@@ -1,4 +1,6 @@
 ﻿using AbsenceManagement.Data.EF;
+using AbsenceManagement.Data.EF.People;
+using AbsenceManagement.Data.People;
 using AbsenceManagement.Domain.People;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,8 @@ namespace AbsenceManagement.ConsoleUi
             UpdateDisconnectedPeople();
             RemoveRelationships();
             RemovePeople();
+
+            Console.WriteLine("-- END --");
             Console.ReadKey();
         }
 
@@ -33,16 +37,17 @@ namespace AbsenceManagement.ConsoleUi
 
         private static void InsertPeople() {
             using (var db = new AbsenceManagementContext()) {
-                db.Database.Log = Console.WriteLine;
-                db.People.AddRange(GetPeople());
-                db.SaveChanges();
+                db.Database.Log = Console.WriteLine;                
+                var repo = new EFDisconnectedPersonRepository(db);
+                foreach (var person in GetPeople()) { repo.Add(person); }
             }
         }
 
         private static void ListAllPeople() {
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
-                PrintPerson(db.People.ToList().ToArray());
+                var repo = new EFDisconnectedPersonRepository(db);
+                PrintPerson(repo.GetAll().ToArray());
             }
         }
         private static void PrintPerson(params Person[] people) {
@@ -54,17 +59,19 @@ namespace AbsenceManagement.ConsoleUi
         private static void InsertRelation() {
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
-                var janeDoe = db.People
+                var pplRepo = new EFDisconnectedPersonRepository(db);
+                var relRepo = new EFDisconnectedRelationRepository(db);
+
+                var janeDoe = pplRepo.GetAll()
                     .FirstOrDefault(p => p.FirstName == "Jane");
-                var johnDoe = db.People
+                var johnDoe = pplRepo.GetAll()
                     .FirstOrDefault(p => p.FirstName == "John");
                 var relation = RelationBuilder
                     .CreateRelation(RelationType.ManagerToSubordinate)
                     .ForMaster(janeDoe)
                     .WithSlave(johnDoe)
                     .Build();
-                db.Relations.Add(relation);
-                db.SaveChanges();
+                relRepo.Add(relation);
             }
         }
 
@@ -109,16 +116,17 @@ namespace AbsenceManagement.ConsoleUi
             IList<Person> peopleToDelete;
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
+                var pplRepo = new EFDisconnectedPersonRepository(db);
                 var peopleToDeleteIds = GetPeople().Select(p => p.DataSourceId);
-                peopleToDelete = db.People.Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();
+                peopleToDelete = pplRepo.GetAll().Where(p => peopleToDeleteIds.Contains(p.DataSourceId)).ToList();
             }
 
             using (var db = new AbsenceManagementContext()) {
                 db.Database.Log = Console.WriteLine;
+                var pplRepo = new EFDisconnectedPersonRepository(db);
                 foreach (var personToDelete in peopleToDelete) {
-                    db.Entry(personToDelete).State = EntityState.Deleted;
-                }
-                db.SaveChanges();
+                    pplRepo.Delete(personToDelete);
+                }                
             }
 
             // NOTE: deleting could very well be done by going off to a stored procedure,

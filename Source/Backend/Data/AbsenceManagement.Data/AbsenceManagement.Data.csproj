@@ -45,8 +45,11 @@
     <Compile Include="IReadRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IWriteRepository.cs" />
+    <Compile Include="People\IPersonRepository.cs" />
+    <Compile Include="People\IReadPersonRepository.cs" />
     <Compile Include="People\IReadRelationRepository.cs" />
     <Compile Include="People\IRelationRepository.cs" />
+    <Compile Include="People\IWritePersonRepository.cs" />
     <Compile Include="People\IWriteRelationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -60,9 +60,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Backend\Data\AbsenceManagement.Data.EF.Infrastructure\AbsenceManagement.Data.EF.Infrastructure.csproj">
+      <Project>{41901a23-5341-4c64-9c38-36288ad7f6dd}</Project>
+      <Name>AbsenceManagement.Data.EF.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Backend\Data\AbsenceManagement.Data.EF\AbsenceManagement.Data.EF.csproj">
       <Project>{44d1a28c-89b5-4c92-95c5-36883c4240c7}</Project>
       <Name>AbsenceManagement.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Backend\Data\AbsenceManagement.Data\AbsenceManagement.Data.csproj">
+      <Project>{93CBD8E5-74F8-472F-9A48-958101B2D45F}</Project>
+      <Name>AbsenceManagement.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Backend\Domain\AbsenceManagement.Domain.Infrastructure\AbsenceManagement.Domain.Infrastructure.csproj">
       <Project>{0fe42b3f-4979-4b9c-bda1-74bddef170e3}</Project>
