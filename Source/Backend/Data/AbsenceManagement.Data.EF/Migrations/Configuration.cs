@@ -8,7 +8,7 @@ namespace AbsenceManagement.Data.EF.Migrations
     internal sealed class Configuration : DbMigrationsConfiguration<AbsenceManagementContext>
     {
         public Configuration() {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = false;            
         }
 
         protected override void Seed(AbsenceManagementContext context) {

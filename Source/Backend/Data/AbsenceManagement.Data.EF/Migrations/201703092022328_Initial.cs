@@ -8,7 +8,7 @@ namespace AbsenceManagement.Data.EF.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.People",
+                "app.People",
                 c => new
                     {
                         Id = c.Guid(nullable: false, identity: true),
@@ -20,11 +20,11 @@ namespace AbsenceManagement.Data.EF.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Requests",
+                "app.Requests",
                 c => new
                     {
                         Id = c.Guid(nullable: false, identity: true),
-                        RequestedAt = c.DateTime(),
+                        RequestedAt = c.DateTime(defaultValue: DateTime.UtcNow),
                         Status = c.Int(nullable: false),
                         RequestorId = c.Guid(nullable: false),
                         RequesteeId = c.Guid(nullable: false),
@@ -32,13 +32,13 @@ namespace AbsenceManagement.Data.EF.Migrations
                         DateModified = c.DateTime(nullable: false, defaultValue: DateTime.UtcNow),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.People", t => t.RequesteeId)
-                .ForeignKey("dbo.People", t => t.RequestorId)
+                .ForeignKey("app.People", t => t.RequesteeId)
+                .ForeignKey("app.People", t => t.RequestorId)
                 .Index(t => t.RequestorId)
                 .Index(t => t.RequesteeId);
             
             CreateTable(
-                "dbo.Relations",
+                "app.Relations",
                 c => new
                     {
                         Id = c.Guid(nullable: false, identity: true),
@@ -49,8 +49,8 @@ namespace AbsenceManagement.Data.EF.Migrations
                         DateModified = c.DateTime(nullable: false, defaultValue: DateTime.UtcNow),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.People", t => t.MasterId, cascadeDelete: false)
-                .ForeignKey("dbo.People", t => t.SlaveId, cascadeDelete: false)
+                .ForeignKey("app.People", t => t.MasterId)
+                .ForeignKey("app.People", t => t.SlaveId)
                 .Index(t => t.MasterId)
                 .Index(t => t.SlaveId);
             
@@ -58,17 +58,17 @@ namespace AbsenceManagement.Data.EF.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Relations", "SlaveId", "dbo.People");
-            DropForeignKey("dbo.Relations", "MasterId", "dbo.People");
-            DropForeignKey("dbo.Requests", "RequestorId", "dbo.People");
-            DropForeignKey("dbo.Requests", "RequesteeId", "dbo.People");
-            DropIndex("dbo.Relations", new[] { "SlaveId" });
-            DropIndex("dbo.Relations", new[] { "MasterId" });
-            DropIndex("dbo.Requests", new[] { "RequesteeId" });
-            DropIndex("dbo.Requests", new[] { "RequestorId" });
-            DropTable("dbo.Relations");
-            DropTable("dbo.Requests");
-            DropTable("dbo.People");
+            DropForeignKey("app.Relations", "SlaveId", "app.People");
+            DropForeignKey("app.Relations", "MasterId", "app.People");
+            DropForeignKey("app.Requests", "RequestorId", "app.People");
+            DropForeignKey("app.Requests", "RequesteeId", "app.People");
+            DropIndex("app.Relations", new[] { "SlaveId" });
+            DropIndex("app.Relations", new[] { "MasterId" });
+            DropIndex("app.Requests", new[] { "RequesteeId" });
+            DropIndex("app.Requests", new[] { "RequestorId" });
+            DropTable("app.Relations");
+            DropTable("app.Requests");
+            DropTable("app.People");
         }
     }
 }

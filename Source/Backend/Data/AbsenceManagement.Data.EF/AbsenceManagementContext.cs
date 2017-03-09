@@ -28,6 +28,8 @@ namespace AbsenceManagement.Data.EF
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            modelBuilder.HasDefaultSchema("app");
+
             modelBuilder.Entity<Request>()
                 .HasRequired(r => r.Requestor)
                 .WithMany(p => p.Requests)
@@ -35,6 +37,16 @@ namespace AbsenceManagement.Data.EF
 
             modelBuilder.Entity<Request>()
                 .HasRequired(r => r.Requestee)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Relation>()
+                .HasRequired(r => r.Master)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Relation>()
+                .HasRequired(r => r.Slave)
                 .WithMany()
                 .WillCascadeOnDelete(false);
         }
