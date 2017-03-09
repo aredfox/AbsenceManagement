@@ -24,15 +24,12 @@ namespace AbsenceManagement.Data.EF.Infrastructure
         }
 
         public virtual void Delete(TKey entityId) {
-            var entity = Set.Find(entityId);
-            Delete(entity);
+            Delete(Set.Find(entityId));
         }
 
         public virtual void Delete(TEntity entity) {
-            if(entity != null) {
-                Database.Entry(entity).State = EntityState.Deleted;
-                Database.SaveChanges();
-            }
+            Database.Entry(entity).State = EntityState.Deleted;
+            Database.SaveChanges();
         }
 
         public virtual IEnumerable<TEntity> GetAll() {
@@ -44,7 +41,7 @@ namespace AbsenceManagement.Data.EF.Infrastructure
         }
 
         public virtual void Update(TEntity entity, TKey entityId = default(TKey)) {            
-            Database.Entry(entity).State = EntityState.Modified;            
+            Database.Entry(entity).State = EntityState.Modified;
             Database.SaveChanges();
         }
     }

@@ -24,12 +24,12 @@ namespace AbsenceManagement.Data.EF.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false, identity: true),
-                        RequestedAt = c.DateTime(defaultValue: DateTime.UtcNow),
+                        RequestedAt = c.DateTime(),
                         Status = c.Int(nullable: false),
                         RequestorId = c.Guid(nullable: false),
                         RequesteeId = c.Guid(nullable: false),
-                        DateCreated = c.DateTime(nullable: false, defaultValue: DateTime.UtcNow),
-                        DateModified = c.DateTime(nullable: false, defaultValue: DateTime.UtcNow),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateModified = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("app.People", t => t.RequesteeId)
@@ -45,8 +45,8 @@ namespace AbsenceManagement.Data.EF.Migrations
                         MasterId = c.Guid(nullable: false),
                         SlaveId = c.Guid(nullable: false),
                         Type = c.Int(nullable: false),
-                        DateCreated = c.DateTime(nullable: false, defaultValue: DateTime.UtcNow),
-                        DateModified = c.DateTime(nullable: false, defaultValue: DateTime.UtcNow),
+                        DateCreated = c.DateTime(nullable: false),
+                        DateModified = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("app.People", t => t.MasterId)

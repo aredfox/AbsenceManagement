@@ -16,15 +16,15 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
             var sut = new EFDisconnectedPersonRepository(
                 EFTestData.GetTransientAbsenceManagementContext()
             );
-            var expected = PersonBuilder.CreatePerson("John", "Doe").Build();
+            var user = PersonBuilder.CreatePerson("John", "Doe").Build();
             // Act
-            sut.Add(expected);
+            sut.Add(user);
             var actual = sut.GetAll().FirstOrDefault(p => p.FirstName.Equals("John"));
             // Assert
             Assert.Equal(1, sut.GetAll().Count());
             Assert.NotNull(actual);
-            Assert.Equal(expected.FirstName, actual.FirstName);
-            Assert.Equal(expected.LastName, actual.LastName);
+            Assert.Equal(user.FirstName, actual.FirstName);
+            Assert.Equal(user.LastName, actual.LastName);
         }
 
         [Fact]
@@ -33,11 +33,11 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
             using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
                 // Arrange
                 var sut = new EFDisconnectedPersonRepository(ctx);
-                var johnId = sut.GetAll().FirstOrDefault().Id;
+                var userId = sut.GetAll().FirstOrDefault().Id;
 
                 // Act
                 var actual = PersonBuilder.CreatePerson("Johnnie", "Doe").Build();
-                TestData.SetPrivateProperty(actual, nameof(Person.Id), johnId);
+                TestData.SetPrivateProperty(actual, nameof(Person.Id), userId);
                 sut.Update(actual);
 
                 // Assert
@@ -54,13 +54,15 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
             using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
                 // Arrange
                 var sut = new EFDisconnectedPersonRepository(ctx);
-                var john = sut.GetAll().FirstOrDefault();
+                var user = sut.GetAll().FirstOrDefault();
+                var userId = user.Id;
 
                 // Act
-                sut.Delete(john);
+                sut.Delete(user);
+                var nullUser = ctx.People.FirstOrDefault(p => p.Id.Equals(userId));
 
                 // Assert
-                Assert.Equal(ctx.People.Count(), sut.GetAll().Count());
+                Assert.Null(nullUser);
             }
         }
 
@@ -70,13 +72,14 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
             using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
                 // Arrange
                 var sut = new EFDisconnectedPersonRepository(ctx);
-                var johnId = sut.GetAll().FirstOrDefault().Id;
+                var userId = sut.GetAll().FirstOrDefault().Id;
 
                 // Act
-                sut.Delete(johnId);
+                sut.Delete(userId);
+                var user = ctx.People.FirstOrDefault(p => p.Id.Equals(userId));
 
                 // Assert
-                Assert.Equal(ctx.People.Count(), sut.GetAll().Count());
+                Assert.Null(user);
             }
         }
 
@@ -86,14 +89,14 @@ namespace AbsenceManagement.Data.EF.Tests.Infrastructure
             using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
                 // Arrange
                 var sut = new EFDisconnectedPersonRepository(ctx);
-                var johnId = sut.GetAll().FirstOrDefault().Id;
+                var userId = sut.GetAll().FirstOrDefault().Id;
 
                 // Act
-                var john = sut.GetById(johnId);
+                var user = sut.GetById(userId);
 
                 // Assert
-                Assert.NotNull(john);
-                Assert.Equal(johnId, john.Id);
+                Assert.NotNull(user);
+                Assert.Equal(userId, user.Id);
             }
         }
     }

@@ -39,22 +39,13 @@ namespace AbsenceManagement.Data.EF
                 .HasRequired(r => r.Requestee)
                 .WithMany()
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Relation>()
-                .HasRequired(r => r.Master)
-                .WithMany()
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Relation>()
-                .HasRequired(r => r.Slave)
-                .WithMany()
-                .WillCascadeOnDelete(false);
         }
 
         public override int SaveChanges() {
             var history = ChangeTracker.Entries()
                 .Where(e => e.Entity is IModificationHistory
-                            && e.State == EntityState.Modified)
+                            && e.State == EntityState.Modified
+                            && e.State != EntityState.Deleted)
                 .Select(e => e.Entity as IModificationHistory)
                 .ToList();
 
