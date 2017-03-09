@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\IAppRepository.cs" />
+    <Compile Include="App\IExternalLoginRepository.cs" />
+    <Compile Include="App\IRoleRepository.cs" />
+    <Compile Include="App\IUnitOfWork.cs" />
+    <Compile Include="App\IUserRepository.cs" />
     <Compile Include="IConnectedRepository.cs" />
     <Compile Include="IDisconnectedRepository.cs" />
     <Compile Include="IReadRepository.cs" />

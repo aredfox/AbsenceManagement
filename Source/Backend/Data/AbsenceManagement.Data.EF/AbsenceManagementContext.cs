@@ -1,4 +1,5 @@
-﻿using AbsenceManagement.Domain.Infrastructure;
+﻿using AbsenceManagement.Domain.App;
+using AbsenceManagement.Domain.Infrastructure;
 using AbsenceManagement.Domain.People;
 using AbsenceManagement.Domain.Requests;
 using System;
@@ -13,6 +14,11 @@ namespace AbsenceManagement.Data.EF
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Relation> Relations { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
+
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Claim> Claims { get; set; }
+        public virtual DbSet<ExternalLogin> ExternalLogins { get; set; }
 
         public AbsenceManagementContext(string connectionString)
             : base(connectionString) {
@@ -39,6 +45,15 @@ namespace AbsenceManagement.Data.EF
                 .HasRequired(r => r.Requestee)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .Map(m => m.ToTable("identity.Users"));
+            modelBuilder.Entity<ExternalLogin>()
+                .Map(m => m.ToTable("identity.ExternalLogins"));
+            modelBuilder.Entity<Claim>()
+                .Map(m => m.ToTable("identity.Claims"));
+            modelBuilder.Entity<Role>()
+                .Map(m => m.ToTable("identity.Roles"));
         }
 
         public override int SaveChanges() {

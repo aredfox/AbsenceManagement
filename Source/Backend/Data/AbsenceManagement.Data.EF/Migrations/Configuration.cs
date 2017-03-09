@@ -1,5 +1,6 @@
 namespace AbsenceManagement.Data.EF.Migrations
 {
+    using AbsenceManagement.Domain.App;
     using Domain.People;
     using System;
     using System.Data.Entity.Migrations;
@@ -22,6 +23,16 @@ namespace AbsenceManagement.Data.EF.Migrations
                     .WithDataSource("SYSTEM", "0")
                     .Build()
                 );
+                context.SaveChanges();
+
+                systemUser = context.People
+                    .FirstOrDefault(p => p.DataSource == "SYSTEM" && p.DataSourceId == "0");
+
+                context.Users.Add(new User {
+                    Person = systemUser,
+                    PersonId = systemUser.Id,                    
+                    UserName = "SYSTEM",                    
+                });
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using AbsenceManagement.Domain.Infrastructure;
+﻿using AbsenceManagement.Domain.App;
+using AbsenceManagement.Domain.Infrastructure;
 using AbsenceManagement.Domain.Infrastructure.Formatting;
 using AbsenceManagement.Domain.Requests;
 using System;
@@ -10,7 +11,7 @@ namespace AbsenceManagement.Domain.People
     public class Person : DomainEntity<Guid>
     {
         public string FirstName { get; private set; }
-        public string LastName { get; private set; }
+        public string LastName { get; private set; }        
 
         [Required(AllowEmptyStrings = false)]
         public string DataSource { get; private set; }
