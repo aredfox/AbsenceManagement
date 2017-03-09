@@ -52,6 +52,7 @@
     <Compile Include="AbsenceManagementContext.cs" />
     <Compile Include="App\EFExternalLoginRepository.cs" />
     <Compile Include="App\EFRoleRepository.cs" />
+    <Compile Include="App\EFUnitOfWork.cs" />
     <Compile Include="App\EFUserRepository.cs" />
     <Compile Include="Migrations\201703092231214_Initial.cs" />
     <Compile Include="Migrations\201703092231214_Initial.Designer.cs">
