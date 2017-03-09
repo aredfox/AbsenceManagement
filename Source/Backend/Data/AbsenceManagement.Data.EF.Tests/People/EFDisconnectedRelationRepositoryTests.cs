@@ -9,6 +9,38 @@ namespace AbsenceManagement.Data.EF.Tests.People
     public class EFDisconnectedRelationRepositoryTests
     {
         [Fact]
+        public void Can_GetForSlave_WithObject()
+        {
+            using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
+                // Arrange
+                var sut = new EFDisconnectedRelationRepository(ctx);
+                var slave = ctx.People.FirstOrDefault(p => p.DataSourceId.Equals("11101985"));
+
+                // Act
+                var relations = sut.GetForSlave(slave);
+
+                // Assert
+                Assert.Equal(1, relations.Count());
+            }
+        }
+
+        [Fact]
+        public void Can_GetForSlave_WithId()
+        {            
+            using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
+                // Arrange
+                var sut = new EFDisconnectedRelationRepository(ctx);
+                var slave = ctx.People.FirstOrDefault(p => p.DataSourceId.Equals("11101985"));
+
+                // Act
+                var relations = sut.GetForSlave(slave.Id);
+
+                // Assert
+                Assert.Equal(1, relations.Count());
+            }
+        }
+
+        [Fact]
         public void Can_GetForMaster_WithObject()
         {
             using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
