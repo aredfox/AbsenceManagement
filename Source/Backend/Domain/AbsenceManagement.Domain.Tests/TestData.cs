@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace AbsenceManagement.Domain.Tests
 {
@@ -46,6 +47,27 @@ namespace AbsenceManagement.Domain.Tests
                     .Build()
                 )
                 .Select(r => new object[] { r });
+        }
+
+        public static void SetPrivateProperty<TSubject, TProperty>(
+            TSubject subject, string propertyName, TProperty newValue)
+        {
+            var fieldInfos =
+                subject.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                .ToList();
+            var derivedFieldInfos = subject.GetType().BaseType.GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                    .ToList();
+            fieldInfos.AddRange(derivedFieldInfos);
+            fieldInfos = fieldInfos
+                .Where(f => f.FieldType == typeof(TProperty))
+                .ToList();
+
+            foreach (var fieldInfo in fieldInfos) {                
+                    if (fieldInfo.Name.ToLower().Contains(propertyName.ToLower())) {
+                        fieldInfo.SetValue(subject, newValue);
+                        break;
+                    }
+            }            
         }
     }
 }

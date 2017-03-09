@@ -41,8 +41,8 @@ namespace AbsenceManagement.Data.EF.Infrastructure
             return Set.AsNoTracking().FirstOrDefault(e => e.Id.Equals(key));
         }
 
-        public virtual void Update(TEntity entity, TKey entityId = default(TKey)) {
-            Database.Entry(entity).State = EntityState.Modified;
+        public virtual void Update(TEntity entity, TKey entityId = default(TKey)) {            
+            Database.Entry(entity).State = EntityState.Modified;            
             Database.SaveChanges();
         }
     }
