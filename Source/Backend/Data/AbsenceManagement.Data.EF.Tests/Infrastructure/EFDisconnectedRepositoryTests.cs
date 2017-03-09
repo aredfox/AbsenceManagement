@@ -1,20 +1,17 @@
 ﻿using AbsenceManagement.Data.EF.People;
-using AbsenceManagement.Domain.Infrastructure;
 using AbsenceManagement.Domain.People;
 using AbsenceManagement.Domain.Tests;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
+
 using Xunit;
 
-namespace AbsenceManagement.Data.EF.Tests.People
+namespace AbsenceManagement.Data.EF.Tests.Infrastructure
 {
-    public class EFDisconnectedPersonRepositoryTests
+    public class EFDisconnectedRepositoryTests
     {
         [Fact]
-        public void Can_Add() {
+        public void Can_Add()
+        {
             // Arrange            
             var sut = new EFDisconnectedPersonRepository(
                 EFTestData.GetTransientAbsenceManagementContext()
@@ -33,7 +30,7 @@ namespace AbsenceManagement.Data.EF.Tests.People
         [Fact]
         public void Can_Update()
         {
-            using(var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
+            using (var ctx = EFTestData.GetPersistentAbsenceManagentContext()) {
                 // Arrange
                 var sut = new EFDisconnectedPersonRepository(ctx);
                 var johnId = sut.GetAll().FirstOrDefault().Id;
@@ -48,7 +45,7 @@ namespace AbsenceManagement.Data.EF.Tests.People
                 Assert.NotNull(actual);
                 Assert.Equal("Johnnie", actual.FirstName);
                 Assert.Equal("Doe", actual.LastName);
-            }                        
+            }
         }
 
         [Fact]
@@ -79,7 +76,7 @@ namespace AbsenceManagement.Data.EF.Tests.People
                 sut.Delete(johnId);
 
                 // Assert
-                Assert.Equal(0, sut.GetAll().Count());                
+                Assert.Equal(0, sut.GetAll().Count());
             }
         }
 
