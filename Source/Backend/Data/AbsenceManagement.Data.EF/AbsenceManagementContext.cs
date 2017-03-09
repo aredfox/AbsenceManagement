@@ -2,6 +2,7 @@
 using AbsenceManagement.Domain.People;
 using AbsenceManagement.Domain.Requests;
 using System;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 
@@ -15,6 +16,11 @@ namespace AbsenceManagement.Data.EF
 
         public AbsenceManagementContext(string connectionString)
             : base(connectionString) {
+            Configuration.LazyLoadingEnabled = false;
+        }
+        public AbsenceManagementContext(DbConnection connection) 
+            : base(connection, true)
+        {
             Configuration.LazyLoadingEnabled = false;
         }
         public AbsenceManagementContext() {
