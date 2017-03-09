@@ -24,13 +24,15 @@ namespace AbsenceManagement.Data.EF.Infrastructure
         }
 
         public virtual void Delete(TKey entityId) {
-            Set.Where(e => e.Id.Equals(entityId))
-               .Delete();
-            Database.SaveChanges();
+            var entity = Set.Find(entityId);
+            Delete(entity);
         }
 
         public virtual void Delete(TEntity entity) {
-            Delete(entity.Id);
+            if(entity != null) {
+                Database.Entry(entity).State = EntityState.Deleted;
+                Database.SaveChanges();
+            }
         }
 
         public virtual IEnumerable<TEntity> GetAll() {
